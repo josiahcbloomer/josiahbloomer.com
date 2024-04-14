@@ -1,0 +1,99 @@
+.window {
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0);
+
+    &.open {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 100%;
+        height: 100%;
+        background: #0003;
+        z-index: -1;
+    }
+}
+.window-outer, .window-inner {
+    width: 100%;
+    height: 100%;
+}
+.window-outer {
+    background: #fff;
+    border: solid 3px #000;
+
+    padding: 10px;
+}
+.window-inner {
+    border: solid 3px #000;
+    border-top: none;
+}
+.window-header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 6px;
+    background: #e6e6e6;
+    border: solid 3px #000;
+    border-right: none;
+    border-left: none;
+    height: 40px;
+    user-select: none;
+
+    h2 {
+        margin: 0;
+        font-family: "brandon-grotesque", sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        pointer-events: none;
+        user-select: none;
+    }
+    .close-button {
+        position: relative;
+        background: #ffc5c5;
+        border: none;
+        outline: none;
+        border-left: solid 3px #000;
+        width: 34px;
+        height: 34px;
+
+        cursor: default;
+        &:hover {
+            background: #ffaeae;
+        }
+
+        &::before, &::after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+}
+.window-content {
+    min-height: 10px;
+    min-width: 300px;
+    padding: 30px;
+    &.nopadding { padding: 0 }
+}
+.window .split {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}

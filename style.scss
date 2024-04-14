@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    font-family: "brandon-grotesque", sans-serif;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    background: #ff7979;
+    overflow: hidden;
+}
+
+
+#progress-chart {
+    width: 250px;
+    height: 250px;
+}
+
+.progress-window {
+    .window-content {
+        padding: 30px 50px;
+    }
+    .left, .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 20px 20px;
+    }
+    .percent-funded {
+        font-weight: 600;
+        font-size: 120px;
+        line-height: 100px;
+        margin: 0;
+    }
+    .funded-subtitle {
+        font-weight: 600;
+        font-size: 70px;
+        line-height: 70px;
+        margin: 0;
+    }
+    .fundraising-money {
+        font-weight: 600;
+        font-size: 36px;
+        text-align: center;
+        margin: 0;
+        line-height: 36px;
+    }
+}
+
+.donate-window {
+    text-align: center;
+    .donate-button {
+        display: inline-block;
+        padding: 10px 30px;
+        background: #f9ca24;
+        border: solid 2px #000;
+        color: #000;
+        text-decoration: none;
+        font-size: 32px;
+        font-weight: 800;
+
+        &:hover { background: #ebbd1a; }
+        &:active { background: #d9a510; }
+    }
+}
+
+.story-window {
+    h2 {
+        margin-top: 0;
+    }
+    .window-content {
+        overflow-y: scroll;
+        width: 600px;
+    }
+    p {
+        font-size: 18px;
+        font-weight: 400;
+        .right { float: right }
+    }
+}
