@@ -5,6 +5,8 @@ let lastClientMouse = { x: 0, y: 0 }
 let canvasMouse = { x: 0, y: 0 }
 let pongState = "game-over"
 
+let timeMultiplier = 0;
+
 let paddles = [],
 	ball
 let gameScore = 0
@@ -33,8 +35,8 @@ class PongPaddle {
 		if (this.type == "player") {
 			this.y = canvasMouse.y
 		} else {
-			if (this.y < ball.y) this.y += this.speed
-			if (this.y > ball.y) this.y -= this.speed
+			if (this.y < ball.y) this.y += this.speed * timeMultiplier
+			if (this.y > ball.y) this.y -= this.speed * timeMultiplier
 		}
 
 		this.y = constrain(
@@ -63,8 +65,8 @@ class PongBall {
 		this.canScore = true
 	}
 	update() {
-		this.x += this.xVel
-		this.y += this.yVel
+		this.x += this.xVel * timeMultiplier
+		this.y += this.yVel * timeMultiplier
 
 		if (
 			this.x < paddles[0].x + paddles[0].width / 2 + this.radius &&
@@ -119,7 +121,13 @@ ball = new PongBall()
 paddles.push(new PongPaddle("cpu"))
 paddles.push(new PongPaddle("player"))
 
-function draw() {
+let lastTime;
+
+function draw(time) {
+	// to adjust for different refresh rates
+	timeMultiplier = (time - lastTime) / 16;
+	lastTime = time
+
 	ptx.fillStyle = "#000"
 	ptx.fillRect(0, 0, pongCanvas.width, pongCanvas.height)
 
@@ -158,16 +166,16 @@ function draw() {
 
         // check walls
         if (pongWindow.offsetLeft < pongWindow.offsetWidth / 2) {
-            pongWindowVel.x = random(.8, 1.1) * pongWindowSpeed
+            pongWindowVel.x = random(.8, 1.1) * pongWindowSpeed * timeMultiplier
         }
         if (pongWindow.offsetLeft > window.innerWidth - pongWindow.offsetWidth / 2) {
-            pongWindowVel.x = -random(.8, 1.1) * pongWindowSpeed
+            pongWindowVel.x = -random(.8, 1.1) * pongWindowSpeed * timeMultiplier
         }
         if (pongWindow.offsetTop < pongWindow.offsetHeight / 2) {
-            pongWindowVel.y = random(.8, 1.1) * pongWindowSpeed
+            pongWindowVel.y = random(.8, 1.1) * pongWindowSpeed * timeMultiplier
         } 
         if (pongWindow.offsetTop > window.innerHeight - pongWindow.offsetHeight / 2) {
-            pongWindowVel.y = -random(.8, 1.1) * pongWindowSpeed
+            pongWindowVel.y = -random(.8, 1.1) * pongWindowSpeed * timeMultiplier
         }
 
         let bounds = pongCanvas.getBoundingClientRect()
