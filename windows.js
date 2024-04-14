@@ -42,7 +42,7 @@ windows.forEach(wind => {
         wind.classList.remove("open")
 
         setTimeout(() => {
-            wind.style.transition = "transform 0.5s"
+            wind.style.transition = "transform 0.4s"
             wind.classList.add("open")
         }, 500)
 
@@ -70,10 +70,10 @@ window.addEventListener("load", e => {
 
     windowZOrder.forEach((id, index) => {
         let window = document.getElementById(id)
-        // window.style.transition = "transform 0.5s"
+        window.style.transition = "transform 0.4s"
         setTimeout(() => {
             window.classList.add("open")
-        }, (windowZOrder.length - index) * 300 * 0)
+        }, (windowZOrder.length - index) * 300)
     })
 })
 
