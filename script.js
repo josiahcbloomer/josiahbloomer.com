@@ -32,12 +32,14 @@ function drawProgressChart(progress) {
 let percentElement = document.querySelector(".percent-funded")
 let moneyElement = document.querySelector(".fundraising-money")
 async function fetchAmount() {
-    let { raised, goal } = await fetch("https://api.josiahbloomer.com/amount_raised").then(res => res.json())
+    let { raised, goal, refetch } = await fetch("https://api.josiahbloomer.com/amount_raised").then(res => res.json())
     drawProgressChart(raised / goal)
 
     percentElement.textContent = `${(raised / goal * 100).toFixed(0)}%`
 
     moneyElement.textContent = `${formatMoney(raised)} of ${formatMoney(goal)}`
+
+    if (refetch) setTimeout(fetchAmount, 5000)
 }
 
 window.addEventListener("load", fetchAmount)
