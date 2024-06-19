@@ -38,11 +38,11 @@ function genLines() {
 let points = genLines()
 
 function setup() {
-    createCanvas(1920, 600)
+    createCanvas(1400, 500)
 }
 
 function exportSVG() {
-    let svgContent = `<svg width="1920" height="1100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1100">\n`;
+    let svgContent = `<svg width="1400" height="500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1100">\n`;
     svgContent += `<path d="M 0 ${DOC_HEIGHT} `;
 
     for (let i = 0; i < points.length; i += 2) {
