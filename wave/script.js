@@ -86,7 +86,7 @@ function draw() {
     endShape()
 
     let lastPoint = [0, DOC_HEIGHT]
-    strokeWeight(2)
+    strokeWeight(1)
     for (let i = 0; i < points.length; i++) {
         stroke(255, 0, 0)
         line(lastPoint[0], lastPoint[1], points[i][0], points[i][1])
@@ -95,9 +95,9 @@ function draw() {
 
         noStroke()
         fill(0, 0, 255)
-        ellipse(points[i][0], points[i][1], 10, 10)
+        ellipse(points[i][0], points[i][1], 6, 6)
         fill(255, 0, 0)
-        ellipse(points[i][2], points[i][3], 10, 10)
+        ellipse(points[i][2], points[i][3], 6, 6)
 
         lastPoint = [points[i][4], points[i][5]]
     }
