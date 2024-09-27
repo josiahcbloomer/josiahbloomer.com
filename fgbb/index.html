@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Message Tracker</title>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</head>
+	<body>
+		<h1>Messages Sent Per Day</h1>
+
+		<label for="chartType">Chart Type:</label>
+		<select id="chartType" onchange="updateChartType()">
+			<option value="line">Line Chart</option>
+			<option value="bar">Bar Chart</option>
+		</select>
+
+		<label for="startDate">Start Date:</label>
+		<input type="date" id="startDate" value="2023-11-01" onchange="updateDateRange()" />
+
+		<label for="endDate">End Date:</label>
+		<input type="date" id="endDate" value="2024-09-26" onchange="updateDateRange()" />
+
+		<canvas id="messageChart" width="400" height="200"></canvas>
+
+		<script src="script.js"></script>
+	</body>
+</html>
