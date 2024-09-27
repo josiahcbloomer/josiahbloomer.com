@@ -1,6 +1,6 @@
 let chart
 let data
-let chartType = "line"
+let chartType = document.getElementById("chartType").value
 
 let dateRange = localStorage.getItem("dateRange")
 if (dateRange) {
